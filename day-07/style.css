@@ -1,0 +1,18 @@
+h1{
+    color: azure;
+    background-color: black;
+}
+
+p{
+    color: aqua;
+    background-color: cadetblue;
+    width: 200px;
+    height: 60px;
+}
+#middle{
+    color: blue; background-color: black;
+}
+span{
+    color: aqua;
+    background-color: black;
+}

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #fff;
+
+      background:
+        radial-gradient(circle at 20% 20%, #7c3aed33, transparent 35%),
+        radial-gradient(circle at 80% 80%, #ec489933, transparent 35%),
+        #07070a;
+    }
+
+    /* Ambient background glow */
+    body::before,
+    body::after {
+      content: "";
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.35;
+      animation: float 8s ease-in-out infinite alternate;
+    }
+
+    body::before {
+      background: #8b5cf6;
+      top: -250px;
+      left: -200px;
+    }
+
+    body::after {
+      background: #ec4899;
+      bottom: -250px;
+      right: -200px;
+      animation-delay: -4s;
+    }
+
+    @keyframes float {
+      from {
+        transform: translate(0, 0);
+      }
+      to {
+        transform: translate(80px, 40px);
+      }
+    }
+
+    .card {
+      position: relative;
+      width: min(90%, 520px);
+      padding: 55px 45px;
+
+      text-align: center;
+
+      background: rgba(18, 18, 24, 0.68);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 32px;
+
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+
+      box-shadow:
+        0 40px 100px rgba(0, 0, 0, 0.65),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+      animation: appear 0.8s cubic-bezier(.16,1,.3,1);
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(30px) scale(.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .orb {
+      width: 90px;
+      height: 90px;
+      margin: 0 auto 30px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 50%;
+
+      background: linear-gradient(135deg, #a855f7, #ec4899);
+
+      box-shadow:
+        0 0 30px #a855f766,
+        0 0 80px #ec489933;
+
+      font-size: 38px;
+
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      50% {
+        transform: scale(1.06);
+        box-shadow:
+          0 0 40px #ec489988,
+          0 0 100px #a855f744;
+      }
+    }
+
+    .eyebrow {
+      color: #c084fc;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: clamp(38px, 8vw, 58px);
+      line-height: 1;
+      letter-spacing: -3px;
+      margin-bottom: 18px;
+
+      background: linear-gradient(
+        120deg,
+        #fff,
+        #e9d5ff 45%,
+        #f9a8d4
+      );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .subtitle {
+      color: #a1a1aa;
+      font-size: 16px;
+      line-height: 1.7;
+      max-width: 360px;
+      margin: 0 auto 35px;
+    }
+
+    .username {
+      display: inline-block;
+      padding: 10px 18px;
+      margin-bottom: 30px;
+
+      border-radius: 999px;
+
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+
+      color: #e9d5ff;
+      font-size: 14px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 100%;
+      padding: 16px 24px;
+
+      border: none;
+      border-radius: 16px;
+
+      color: white;
+      font-size: 15px;
+      font-weight: 700;
+
+      cursor: pointer;
+
+      background: linear-gradient(
+        110deg,
+        #7c3aed,
+        #a855f7,
+        #ec4899
+      );
+
+      box-shadow: 0 15px 35px rgba(168, 85, 247, 0.25);
+
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      box-shadow:
+        0 20px 45px rgba(168, 85, 247, 0.4);
+    }
+
+    .button:active {
+      transform: translateY(0) scale(.98);
+    }
+
+    .footer {
+      margin-top: 25px;
+      color: #52525b;
+      font-size: 12px;
+    }
+
+    .spark {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: white;
+      box-shadow: 0 0 12px white;
+      animation: sparkle 4s linear infinite;
+    }
+
+    .spark:nth-child(1) {
+      top: 15%;
+      left: 12%;
+    }
+
+    .spark:nth-child(2) {
+      top: 25%;
+      right: 10%;
+      animation-delay: 1s;
+    }
+
+    .spark:nth-child(3) {
+      bottom: 15%;
+      left: 18%;
+      animation-delay: 2s;
+    }
+
+    .spark:nth-child(4) {
+      bottom: 25%;
+      right: 15%;
+      animation-delay: 3s;
+    }
+
+    @keyframes sparkle {
+      0%, 100% {
+        opacity: 0;
+        transform: scale(.5);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.5);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="spark"></div>
+  <div class="spark"></div>
+  <div class="spark"></div>
+  <div class="spark"></div>
+
+  <main class="card">
+
+    <div class="orb">
+      ✦
+    </div>
+
+    <div class="eyebrow">
+      Access Granted
+    </div>
+
+    <h1>
+      You're In.
+    </h1>
+
+    <p class="subtitle">
+      Your account is ready. Welcome to a place built
+      for people who refuse to settle for ordinary.
+    </p>
+
+    <div class="username">
+      ✨ @yourusername
+    </div>
+
+    <button class="button" onclick="enterSite()">
+      Enter the Experience →
+    </button>
+
+    <div class="footer">
+      Your journey starts now.
+    </div>
+
+  </main>
+
+  <script>
+    function enterSite() {
+      document.querySelector(".button").textContent = "Welcome ✦";
+
+      setTimeout(() => {
+        console.log("Entering the experience...");
+        // window.location.href = "/dashboard";
+      }, 500);
+    }
+  </script>
+
+</body>
+</html>
